@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://tuffi.db.elephantsql.com:5432/peaavsdb
+    username: peaavsdb
+    password: aCHy8v9o7-kGm394JydenrVUpAj7x1HQ
+    driverClassName: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
+  flyway:
+    enabled: true
+
