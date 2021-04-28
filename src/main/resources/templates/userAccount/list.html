@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Listagem de usuarios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
 <nav class="navbar is-primary is-light is-spaced" role="navigation" aria-label="main navigation">
@@ -26,9 +29,14 @@
             <a style="margin-left: 10px" class="navbar-item" href="/user-account/new">
                 Cadastro de usuario
             </a>
+            <a style="margin-left: 10px" class="navbar-item" href="/statistics">
+                Estatisticas
+            </a>
         </div>
     </div>
 </nav>
+
+
 
 <section class="section hero is-light medium">
     <div class="container">
@@ -38,10 +46,14 @@
     </div>
 </section>
 <section class="container mt-5">
-    <input class="input is-rounded mb-5" id="txtSearch" name="keyword" placeholder="Entre com o nome para pesquisar"
+    <input class="input is-rounded mb-5" id="myInput" name="keyword" placeholder="Entre com o nome para pesquisar"
            type="text">
+    <button id="M" class="M button" type="button">Male</button>
+    <button id="F" class="F button" type="button">Female</button>
 
-    <table class="table container" style="width: 90%">
+
+
+    <table data-order='[[ 1, "asc" ]]' data-page-length='10' id="profileList" class="table container" style="width: 90%">
         <thead>
         <tr>
             <th>Id</th>
@@ -67,34 +79,44 @@
     </table>
 </section>
 
-<script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    var profileList = /*[[${profileList}]]*/;
-    /*]]>*/
-
-    $('#txtSearch').on('keyup',function (){
-        var value = $(this).val();
-
-        FilterFunction(value,profileList);
+<script>
+    var table = $('#profileList').DataTable({
+        "sDom":"ltipr",
+        buttons: [
+            'columnsToggle'
+        ]
     });
-
-    function FilterFunction(value,data){
-        var filteredData = [];
-        for(var i =0;i<data.length;i++){
-            value = value.toLowerCase();
-            var fname = data[i].name.toLowerCase();
-            if(fname.includes(value)){
-                document.querySelector("#tr" + data[i].id).style.display = 'table-row'
-            } else {
-                document.querySelector("#tr" + data[i].id).style.display = 'none'
-            }
+    $('#M').on( 'click', function () {
+        var state = $(this).data('state');
+        state = !state;
+        if (state) {
+            table.columns(4).search('M').draw();
+            var element = document.getElementById("M");
+            element.classList.add("is-primary");
+        } else {
+            table.columns(4).search('').draw();
+            var element = document.getElementById("M");
+            element.classList.remove("is-primary");
         }
-    }
+        $(this).data('state', state);
+    } );
+    $('#F').on( 'click', function () {
+        var state = $(this).data('state');
+        state = !state;
+        if (state) {
+            table.columns(4).search('F').draw();
+            var element = document.getElementById("F");
+            element.classList.add("is-primary");
+        } else {
+            table.columns(4).search('').draw();
+            var element = document.getElementById("F");
+            element.classList.remove("is-primary");
+        }
+        $(this).data('state', state);
+    } );
+    $('#myInput').on( 'keyup', function () {
+        table.search( this.value ).draw();
+    } );
 </script>
 
 </body>

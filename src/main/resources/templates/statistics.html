@@ -25,11 +25,20 @@
             <a style="margin-left: 10px" class="navbar-item" href="/user-account/new">
                 Cadastro de usuario
             </a>
-            <a style="margin-left: 10px" class="navbar-item" href="/statistics">
+            <a style="margin-left: 10px" class="navbar-item is-active" href="/statistics">
                 Estatisticas
             </a>
         </div>
     </div>
 </nav>
+
+<t1>Numero de Clientes do Genero Masculino:</t1><t1 th:text="${Male}"></t1><p></p>
+<t1>Numero de Clientes do Genero Feminino:</t1><t1 th:text="${Female}"></t1><p></p>
+<t1>Numero de Clientes do Genero Outros:</t1><t1 th:text="${Other}"></t1><p></p>
+<t1>Media da idade dos clientes: </t1><t1 th:text="${AgeAverage}"></t1><p></p>
+<t1>Media da idade dos clientes Do Genero Masculinos: </t1><t1 th:text="${MaleAgeAverage}"></t1><p></p>
+<t1>Media da idade dos clientes Do Genero Femininos: </t1><t1 th:text="${FemaleAgeAverage}"></t1><p></p>
+<t1>Media da idade dos clientes Do Genero Outros: </t1><t1 th:text="${OtherAgeAverage}"></t1><p></p>
+
 </body>
 </html>
