@@ -1,4 +1,3 @@
-/*
 package com.fatec.WBClients.application.services;
 
 import com.fatec.WBClients.application.repositories.ProductRepository;
@@ -6,17 +5,13 @@ import com.fatec.WBClients.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
 
+    @Autowired
     private final ProductRepository repository;
 
     public ProductService(ProductRepository repository) {
@@ -36,7 +31,7 @@ public class ProductService {
     }
 
     public Product findByName(String name_product) {
-        return repository.findByName(name_product).get();
+        return repository.findByNameProduct(name_product).get();
     }
 
     public void save(Product Product) {
@@ -47,4 +42,4 @@ public class ProductService {
         repository.deleteById(id);
     }
 
-}*/
+}

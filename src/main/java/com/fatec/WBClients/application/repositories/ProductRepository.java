@@ -1,4 +1,3 @@
-/*
 package com.fatec.WBClients.application.repositories;
 
 
@@ -10,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Optional<Product> findByName(String name_product);
-}*/
+    Optional<Product> findByNameProduct(String nameProduct);
+}

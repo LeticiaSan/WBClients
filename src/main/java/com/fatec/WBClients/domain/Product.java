@@ -14,12 +14,12 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_product;
-    private String name_product;
+    private long idProduct;
+    private String nameProduct;
 
 
     public Product(Product product) {
-        this.id_product = product.getId_product();
-        this.name_product = product.getName_product();
+        this.idProduct = product.getIdProduct();
+        this.nameProduct = product.getNameProduct();
     }
 }
