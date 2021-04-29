@@ -46,10 +46,8 @@
     </div>
 </section>
 <section class="container mt-5">
-    <input class="input is-rounded mb-5" id="myInput" name="keyword" placeholder="Entre com o nome para pesquisar"
+    <input class="input is-rounded mb-5" id="myInput" name="keyword" placeholder="Entre com o produto para pesquisar"
            type="text">
-    <button id="M" class="M button" type="button">Male</button>
-    <button id="F" class="F button" type="button">Female</button>
 
 
 
@@ -58,24 +56,14 @@
         <tr>
             <th>Id</th>
             <th style="width: 20%">Name</th>
-            <th >Telefone</th>
-            <th>Data de Nascimento</th>
-            <th>Gênero</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Produtos</th>
+
+
         </tr>
         </thead>
         <tbody>
         <tr th:id="'tr' + ${profile.id}" th:each="profile: ${profileList}">
             <td th:text="${profile.id}">Id</td>
             <td th:text="${profile.name}">Nome</td>
-            <td th:text="${profile.telephone}">Telefone</td>
-            <td th:text="${profile.birthdate}">Data de Nascimento</td>
-            <td th:text="${profile.gender}">Gênero</td>
-            <td>  <a th:href="@{'/user-account/edit/' + ${profile.id}}"><button class="button is-warning is-light">Edit</button></a></td>
-            <td>  <a th:href="@{'/user-account/delete/' + ${profile.id}}"><button class="button is-danger is-light">Delete</button></a></td>
-            <td>  <a th:href="@{'/product/view/' + ${profile.id}}"><button class="button is-warning is-light">View</button></a></td>
         </tr>
         </tbody>
     </table>
@@ -88,34 +76,6 @@
             'columnsToggle'
         ]
     });
-    $('#M').on( 'click', function () {
-        var state = $(this).data('state');
-        state = !state;
-        if (state) {
-            table.columns(4).search('M').draw();
-            var element = document.getElementById("M");
-            element.classList.add("is-primary");
-        } else {
-            table.columns(4).search('').draw();
-            var element = document.getElementById("M");
-            element.classList.remove("is-primary");
-        }
-        $(this).data('state', state);
-    } );
-    $('#F').on( 'click', function () {
-        var state = $(this).data('state');
-        state = !state;
-        if (state) {
-            table.columns(4).search('F').draw();
-            var element = document.getElementById("F");
-            element.classList.add("is-primary");
-        } else {
-            table.columns(4).search('').draw();
-            var element = document.getElementById("F");
-            element.classList.remove("is-primary");
-        }
-        $(this).data('state', state);
-    } );
     $('#myInput').on( 'keyup', function () {
         table.search( this.value ).draw();
     } );

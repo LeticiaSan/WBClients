@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <title>Index</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <style>
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+    </style>
 </head>
 <body>
 <nav class="navbar is-primary is-light is-spaced" role="navigation" aria-label="main navigation">
@@ -31,14 +47,35 @@
         </div>
     </div>
 </nav>
-
-<t1>Numero de Clientes do Genero Masculino:</t1><t1 th:text="${Male}"></t1><p></p>
-<t1>Numero de Clientes do Genero Feminino:</t1><t1 th:text="${Female}"></t1><p></p>
-<t1>Numero de Clientes do Genero Outros:</t1><t1 th:text="${Other}"></t1><p></p>
-<t1>Media da idade dos clientes: </t1><t1 th:text="${AgeAverage}"></t1><p></p>
-<t1>Media da idade dos clientes Do Genero Masculinos: </t1><t1 th:text="${MaleAgeAverage}"></t1><p></p>
-<t1>Media da idade dos clientes Do Genero Femininos: </t1><t1 th:text="${FemaleAgeAverage}"></t1><p></p>
-<t1>Media da idade dos clientes Do Genero Outros: </t1><t1 th:text="${OtherAgeAverage}"></t1><p></p>
-
+<table id = "customers">
+    <tr>
+        <td><t1>Numero de Clientes do Genero Masculino</t1></td>
+        <td><t1 th:text="${Male}"></t1><p></p></td>
+    </tr>
+    <tr>
+        <td><t1>Numero de Clientes do Genero Feminino</t1></td>
+        <td><t1 th:text="${Female}"></t1><p></p></td>
+    </tr>
+    <tr>
+        <td><t1>Numero de Clientes do Genero Outros</t1></td>
+        <td><t1 th:text="${Other}"></t1><p></p></td>
+    </tr>
+    <tr>
+        <td><t1>Media da idade dos clientes </t1></td>
+        <td><t1 th:text="${AgeAverage}"></t1><p></p></td>
+    </tr>
+    <tr>
+        <td><t1>Media da idade dos clientes Do Genero Masculinos </t1></td>
+        <td><t1 th:text="${MaleAgeAverage}"></t1><p></p></td>
+    </tr>
+    <tr>
+        <td><t1>Media da idade dos clientes Do Genero Femininos </t1></td>
+        <td><t1 th:text="${FemaleAgeAverage}"></t1><p></p></td>
+    </tr>
+    <tr>
+        <td><t1>Media da idade dos clientes Do Genero Outros </t1></td>
+        <td><t1 th:text="${OtherAgeAverage}"></t1><p></p></td>
+    </tr>
+</table>
 </body>
 </html>
